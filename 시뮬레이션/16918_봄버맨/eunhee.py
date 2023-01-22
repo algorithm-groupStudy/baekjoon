@@ -1,7 +1,7 @@
 from collections import deque
 
 
-def bfs_boom(x, y):
+def boom(x, y):
     global bomb
     bomb[x][y] = "."
     for dx, dy in d:
@@ -29,7 +29,7 @@ while time < n:
     else:
         for x, y in bomb_d:
             bomb[x][y] = "."
-            bfs_boom(x, y)
+            boom(x, y)
             bomb_d = []
 
 for i in range(r):
