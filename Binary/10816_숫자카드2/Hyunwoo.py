@@ -1,19 +1,24 @@
-def binary_search(target,data):
-    cnt = 0 # 상근이가 가지고 있는 카드 숫자
-    cnt_lst = [] # 상근이가 가지고 있는 카드 갯수 구분 
-    data.sort()
-    start, end = 0, len(data) - 1
-    while start <= end:
-        mid = (start+end) // 2
-        if target == data(mid):
-            cnt_lst.append(data(mid))
-        elif target > data(mid):
-            
-            
-    
+n = int(input())
+a = sorted(list(map(int, input().split())))
+m = int(input())
+b = list(map(int, input().split()))
 
-M = int(input())
-M_list = list(map(int, input().split()))
-N = int(input())
-N_list = list(map(int, input().split()))
 
+cnt = {}
+for i in a :
+    if i in cnt :
+        cnt[i] += 1
+    else:
+        cnt[i] = 1
+
+for i in b:
+    if i in cnt:
+        print(cnt[i], end=' ')
+    else:
+        print(0, end = ' ')
+        
+        
+"""
+이 문제 이분탐색으로 푸는 효율적인 방법이 있을까요?
+
+"""
