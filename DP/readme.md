@@ -24,15 +24,15 @@ memoization을 이용하여 같은 계산 반복하지 않음
 
 #### dp 미사용시 fibo(6)
 
-![image-20230125020455568](C:\my2023programs\TIL\images\image-20230125020455568.png)
+![image-20230125020455568](image-20230125020455568.png)
 
-![image-20230125020529014](C:\my2023programs\TIL\images\image-20230125020529014.png)
+![image-20230125020529014](image-20230125020529014.png)
 
 #### dp 사용시 fibo(6)
 
-![image-20230125020541306](C:\my2023programs\TIL\images\image-20230125020541306.png)
+![image-20230125020541306](image-20230125020541306.png)
 
-![image-20230125020603476](C:\my2023programs\TIL\images\image-20230125020603476.png)
+![image-20230125020603476](image-20230125020603476.png)
 
 ```python
 # dp 사용 X O(n^2)
