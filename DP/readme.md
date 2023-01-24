@@ -35,7 +35,7 @@ memoization을 이용하여 같은 계산 반복하지 않음
 ![image-20230125020603476](C:\my2023programs\TIL\images\image-20230125020603476.png)
 
 ```python
-# dp 사용 X
+# dp 사용 X O(n^2)
 def fibo(n):
     if n==1:
         return 1
@@ -45,7 +45,7 @@ def fibo(n):
 print('dp를 사용하지 않음',fibo(6))
 # print('dp를 사용하지 않음',fibo(60))
 
-# 상향식 방법
+# 상향식 방법 O(n)
 def fibo1(n):
     if n==1 or n==2:
         return 1
