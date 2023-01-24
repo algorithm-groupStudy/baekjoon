@@ -24,15 +24,15 @@ memoization을 이용하여 같은 계산 반복하지 않음
 
 #### dp 미사용시 fibo(6)
 
-![image-20230125021216489](image-20230125021216489.png)
+![image-20230125020455568](C:\my2023programs\TIL\images\image-20230125020455568.png)
 
-
+![image-20230125020529014](C:\my2023programs\TIL\images\image-20230125020529014.png)
 
 #### dp 사용시 fibo(6)
 
-![image-20230125021309675](image-20230125021309675.png)
+![image-20230125020541306](C:\my2023programs\TIL\images\image-20230125020541306.png)
 
-
+![image-20230125020603476](C:\my2023programs\TIL\images\image-20230125020603476.png)
 
 ```python
 # dp 사용 X
@@ -93,4 +93,13 @@ print('하향식2',fibo22(6))
 
 ---
 
+### 추천 문제
+
+- [가장 긴 증가하는 부분수열 bj_s2](https://www.acmicpc.net/problem/11053)
+- [정수 삼각형 bj_s1](https://www.acmicpc.net/problem/1932)
+
 채워나갈 리스트
+
+- 시간 복잡도
+- 추천 문제
+
