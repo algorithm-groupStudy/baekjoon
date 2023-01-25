@@ -31,3 +31,5 @@ def bfs(x, y):
                     queue.append((nx, ny))
                     arr[nx][ny] = 0
 ```
+
+추가 내용 - [참고-시간복잡도(Deque & List)](https://github.com/GGamangCoder/TIL/blob/main/%EC%8B%9C%EA%B0%84%EB%B3%B5%EC%9E%A1%EB%8F%84/Deque.md)
