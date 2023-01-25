@@ -13,30 +13,64 @@
 * 단점
     - 해가 없는 경로에 깊이 빠질 가능성이 있다. 따라서 실제의 경우 미리 지정한 임의의 깊이까지만 탐색하고 목표노드를 발견하지 못하면 다음의 경로를 따라 탐색하는 방법이 유용할 수 있다.  
     - 얻어진 해가 최단 경로가 된다는 보장이 없다. 이는 목표에 이르는 경로가 다수인 문제에 대해 깊이우선 탐색은 해에 다다르면 탐색을 끝내버리므로, 이때 얻어진 해는 최적이 아닐 수 있다는 의미이다.   
+작은 숫자부터 탐색한다고 가정
+[1] []
+
+
+while문 시작
+
+
+[2,5,9] [2,5]
+
+
+[2,5,10] [2,5] [2]  
+
+
+[2,6,8] [2,6] [2,7] [2]
+
+
+[] [3] [] [4] []
 
 ## 소스 코드
-### 2차원 배열 - Stack
+### deque
 
 ```py
-def dfs(x, y):
-    dx = [0, 0, 1, -1]
-    dy = [1, -1, 0, 0]
-    stack, temp = [(x, y)], []
-    arr[x][y] = 0
-    j = 0
-
-    while (stack or temp):
-        if stack != []:
-            x, y = stack.pop(-1)
-            for i in range(4):
-                nx, ny = x+dx[i], y+dy[i]
-                if (0 <= nx < N) and (0 <= ny < M):
-                    if arr[nx][ny] == 1:
-                        stack.append((nx, ny))
-                        temp.append((x, y))
-                        arr[nx][ny] = 0
-                        break
-        elif temp != []:
-            x, y= temp.pop(-1)
-            stack.append((x, y))
+def dfs(graph, start_node):
+    ## deque 패키지 불러오기
+    from collections import deque
+    visited = []
+    need_visited = deque()
+    
+    ##시작 노드 설정해주기
+    need_visited.append(start_node)
+    
+    ## 방문이 필요한 리스트가 아직 존재한다면
+    while need_visited:
+        ## 시작 노드를 지정하고
+        node = need_visited.pop()
+ 
+        ##만약 방문한 리스트에 없다면
+        if node not in visited:
+ 
+            ## 방문 리스트에 노드를 추가
+            visited.append(node)
+            ## 인접 노드들을 방문 예정 리스트에 추가
+            need_visited.extend(graph[node])
+                
+    return visited
 ```
+* list 는 pop(0) 같은 연산에서 O(n) , deque 는 O(1) 
+
+### 재귀함수
+```py
+def dfs_recursive(graph, start, visited = []):
+## 데이터를 추가하는 명령어 / 재귀가 이루어짐 
+    visited.append(start)
+ 
+    for node in graph[start]:
+        if node not in visited:
+            dfs_recursive(graph, node, visited)
+    return visited
+```
+
+
