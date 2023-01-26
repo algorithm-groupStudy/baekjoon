@@ -6,3 +6,4 @@ m=int(input())
 person=list(map(int,input().split()))
 
 print(*[dic[num] if num in dic else 0 for num in person])
+
