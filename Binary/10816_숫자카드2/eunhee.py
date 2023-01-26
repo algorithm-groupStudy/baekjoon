@@ -1,3 +1,4 @@
+# 메모리: 115304KB	시간: 740ms
 n=int(input())
 num_arr=list(map(int,input().split()))
 m=int(input())
@@ -10,10 +11,4 @@ for num in num_arr:
     else:
         dic[num]=1
 
-lst=[]
-for num in person:
-    if num in dic:
-        lst.append(dic[num])
-    else:
-        lst.append(0)
-print(*lst)
+print(*[dic[num] if num in dic else 0 for num in person])
