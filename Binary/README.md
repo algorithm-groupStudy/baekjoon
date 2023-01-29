@@ -48,3 +48,5 @@ for ins_number in m_num: # ins_number 모두 넣어서 확인하기
 
 
 ```
+
+## bisect - 배열 이진 분할 알고리즘
