@@ -1,4 +1,3 @@
-
 def check(hp_arr):
     global res
     cnt = 0
