@@ -1,6 +1,8 @@
 # Binary란?
 Binary Search란, 결정문제의 답이 이분법적일 때 사용하는 탐색 기법
 
+![BinarySearch](https://blog.kakaocdn.net/dn/c7MbUC/btrfhIYVCht/Pv3AuFNI8ln9Mvi8Ab4OkK/img.gif)
+
 탈출 조건에 대한 고민
 1) lo < hi 
 2) 정답 lo or hi 
@@ -8,7 +10,15 @@ Binary Search란, 결정문제의 답이 이분법적일 때 사용하는 탐색
 
 방법
 1) 재귀
-2) WHILE문 활용
+2) WHILE문 활용 
+
+
+
+## 시간복잡도 
+- 분할 후 정복(divide and conquer) 전략 사용 
+- 평균 시간 복잡도: O(logN)
+- 최악 시간 복잡도: O(logN)
+- 제한 사항: 데이터가 정렬된 상태로 존재해야함 
 
 # 발표주제 
 1. 10816번을 Binary로 푸는 방법에 대해 같이 고민해요. 
@@ -50,3 +60,4 @@ for ins_number in m_num: # ins_number 모두 넣어서 확인하기
 ```
 
 ## bisect - 배열 이진 분할 알고리즘
+
