@@ -1,5 +1,5 @@
 from collections import deque
-def bfs(start,visited,arr):
+def bfs(start):
     ## 연결 안되어 있는 노드처리 어떻게 할 것인 지 생각
     queue = deque()
     queue.append((start,1))                          # start 는 시작점의 숫자
@@ -25,8 +25,6 @@ def bfs(start,visited,arr):
     
 T = int(input())
 for tc in range(1,T+1):
-    visited =[]
-    check_set = set()
     v, e = map(int,input().split())
     check_visited = [0 for _ in range(v+1)]   # 인덱스의 편의를 위해서 +1
     adj_arr = [[] for _ in range(v)]
@@ -34,8 +32,9 @@ for tc in range(1,T+1):
         a, b = map(int,input().split())
         adj_arr[a-1].append(b)
         adj_arr[b-1].append(a)
-                                                ### 선분이 연결된 것 표시해주는 이중리스트  [ [] ,[3] ,[2] ]   1과는 아무도 연결안됨, 2는 3과 연결, 3은 2와 연결 
     
+                                                ### 선분이 연결된 것 표시해주는 이중리스트  [ [] ,[3] ,[2] ]   1과는 아무도 연결안됨, 2는 3과 연결, 3은 2와 연결 
+    print("adj_arr:",adj_arr)
     for i in range(1,v+1):                      ##  모든 점들에 대해서 탐색 / 점 1 부터 점V 까지
         if i not in check_set:                      ## 점이 check set에 없다면 bfs 실행
             answer, set_list = bfs(i,visited,adj_arr)     ### bfs 돌려서 나온 값인 yes or no 가 answer , check_set을 확장시켜줄 set_list 를 반환값으로 받음
