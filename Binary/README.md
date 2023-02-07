@@ -90,13 +90,13 @@ for ins_number in m_num: # ins_number 모두 넣어서 확인하기
 
 # Binary Search Tree
 
-![image-20230208002045260](images\image-20230208002045260.png)
+![image-20230208002045260](./images\image-20230208002045260.png)
 
 ### 정의
 
 
 
-![image-20230208002316700](images\image-20230208002316700.png)
+![image-20230208002316700](./images\image-20230208002316700.png)
 
 1. 어떤 노드 N을 기준으로 왼쪽 서브 트리 노드의 모든 키 값은 노드 N의 키 값보다 작아야 합니다.
 2. 오른쪽 서브 트리 노드의 키 값은 노드 N의 키 값보다 커야 합니다.
