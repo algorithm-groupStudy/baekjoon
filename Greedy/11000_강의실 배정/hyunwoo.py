@@ -1,34 +1,28 @@
-import sys
-sys.stdin = open("/Users/hyunwoochoi/Desktop/python/sample_input.txt")
+import heapq
 
 num_lectures = int(input())
-
 lectures =[] 
+
 for i in range(num_lectures):
     time_lecture = list(map(int, input().split()))
     lectures.append(time_lecture)
-lectures = sorted(lectures, key = lambda lecture: lectures[0])
-lectures = sorted(lectures, key = lambda lecutre: lectures[1])
-print(lectures)
-print(lectures[0])
-print(lectures[0][0])
-last = 0
-i = 0
-cnt = 1
-while lectures:
-    if lectures[i][0] > last :
-        last = lectures[i][1]
-        lectures.remove(lectures[i])
-        continue
-    elif i == len(lectures):
-        last = 0
-        i = 0
-        cnt += 1
+
+# 시작 시간으로 sort
+lectures.sort(key=lambda lectures: lectures[0])
+end_times = []
+
+for lecture in lectures:
+    # 강의의 시작시간이 이전강의의 종료시간 이후라면, replace
+    if end_times and end_times[0] <= lecture[0]:
+        heapq.heapreplace(end_times, lecture[1])
+    # 강의의 시작시간이 이전 강의의 종료시간 전이라면, end_times에 추가 
     else:
-        i += 1
+        heapq.heappush(end_times, lecture[1])
+    # end_times
+    # [3]
+    # [3, 4]
+    # [4, 5]
 
-
-print(lectures)
-    
+print(len(end_times))
 
 
