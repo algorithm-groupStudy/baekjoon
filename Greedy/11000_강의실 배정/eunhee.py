@@ -1,4 +1,4 @@
-# 다시풀 것
+# # 다시풀 것
 import heapq
 n = int(input())
 lst = []
@@ -15,4 +15,5 @@ for i in range(1, n):
         heapq.heappush(meeting, lst[i][1])
     else:
         heapq.heappush(meeting, lst[i][1])
+
 print(len(meeting))
