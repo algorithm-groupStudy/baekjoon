@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67cb2205-fef0-486d-a4cd-df853e06108e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1707_이분그래프/june.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DFS/1987 알파벳/june.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DP/12865 평범한 배낭/june.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DP/2293_동전1/june.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DP/2839 설탕 배달/june.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DP/1463_1로_만들기/june.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DP/1463_1로_만들기/june2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
