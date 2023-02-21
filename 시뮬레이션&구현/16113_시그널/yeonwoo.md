@@ -173,10 +173,6 @@ public class Main {
                 nr = sr+rc[0];
                 nc = sc+rc[1];
 				// System.out.printf("현재탐색행열 %d, %d = ", nr,nc);
-                // if(nr==-1) {
-                //     // System.out.println("1번 거르고");
-                //     continue;//1은따로체크할꺼
-                // }
 
                 if(!isIn(map,nr,nc)) {
 					// System.out.println("code1");
@@ -188,8 +184,7 @@ public class Main {
                     flag = false;
                     break;//빈공간 불일치
                 }
-				// System.out.println("비어있음");
-                // flag = true;//빈공간 모두 일치
+
             }
             if(flag) {
 				// System.out.println(res[i]+"가 숫자");
