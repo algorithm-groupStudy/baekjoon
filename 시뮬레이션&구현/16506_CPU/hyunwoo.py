@@ -56,9 +56,7 @@ for test_case in range(1, t+1):
     elif assembly_code[1] == '7':
         binary_code += '0111'
     # rA
-    if assembly_code[0] == 'MOV' or assembly_code[0] == 'MOVC':
-        binary_code += '000'
-    elif assembly_code[0] == 'NOT':
+    if assembly_code[0] == 'MOV' or assembly_code[0] == 'MOVC' or assembly_code[0] == 'NOT':
         binary_code += '000'
     elif assembly_code[2] == '0':
         binary_code += '000'
@@ -76,6 +74,7 @@ for test_case in range(1, t+1):
         binary_code += '110'
     elif assembly_code[2] == '7':
         binary_code += '111'
+        
     # rB or #C
     if binary_code[4] == '0': # rB
         if assembly_code[3] == '0':
