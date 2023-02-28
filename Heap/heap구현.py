@@ -40,10 +40,10 @@ class heapSort():
 # 그대로 실행되는 것을 막기위해 선언
 if __name__=="__main__":
     hs=heapSort()
-    hs.insert(1)
-    hs.insert(3)
-    hs.insert(5)
-    hs.insert(6)
+    hs.insert(7)
     hs.insert(2)
-    hs.insert(10)
+    hs.insert(5)
+    hs.insert(3)
+    hs.insert(4)
+    hs.insert(6)
     hs.printHeap()
