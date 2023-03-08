@@ -1,13 +1,7 @@
-package daily.y_2023.m_03.d_02.bj_14722;
-
 import java.io.*;
 import java.util.StringTokenizer;
 
-/*
-60m
-dp/bj  /G4  / 60 /X/14722/우유도시/https://www.acmicpc.net/problem/14722
- */
-public class bj_14722_우유도시 {
+public class Main {
     static int n;				// n x n 행렬
     static int[][] map;
     static int[][][] dp;
@@ -31,7 +25,6 @@ public class bj_14722_우유도시 {
                 map[i][j] = Integer.parseInt(st.nextToken());
         }
 
-        //dp 부분 잘 보면 열별로 구하되 마지막 열에 가서는 앞전 행에서 구한 값도 반영됨을 알 수 있다
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 int currentMilk = map[i][j];	// 현재 위치의 우유
