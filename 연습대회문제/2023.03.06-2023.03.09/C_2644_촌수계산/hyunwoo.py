@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 num_people = int(input())
@@ -11,28 +12,15 @@ for _ in range(num_rel):
     graph[people1].append(people2)
     graph[people2].append(people1)
 
+visit = [0]*(num_people+1)
 
-cnt = 0
-def dfs(graph, start, end):
-    global cnt
-    queue = [start]
-    visited = []  
-    if start == end:
-        return cnt
-    while queue:
-        tmp = queue.pop()
-        if tmp not in visited :
-            visited.append(tmp)
-            cnt += 1
-            for idx in graph[tmp]:
-                if idx not in visited:
-                    dfs(graph,idx,end)
-        else:
-            cnt = -1
-            break
-    return cnt 
-print(dfs(graph,fir_people,sec_people))
+def dfs(start):
+    for n in graph[start]:
+        if visit[n] == 0:
+            visit[n] = visit[start]+1 
+            dfs(n)
+dfs(fir_people)
+print(visit[sec_people] if visit[sec_people] > 0 else -1)
 
 
-                
-                        
+               
