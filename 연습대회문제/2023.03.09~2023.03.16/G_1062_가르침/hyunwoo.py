@@ -1,25 +1,30 @@
 import sys
-sys.stdin = open('/Users/hyunwoochoi/Desktop/python/algo/baekjoon/input.txt')
-
-# N: number of words, K: time to teach
+import itertools
+input = sys.stdin.readline
 
 N, K = map(int, input().split())
+words = set(input().strip() for _ in range(N))
 
-words = []
-for _ in range(N):
-    tmp_word = list(input())
-    words.append(len(tmp_word[4:-4]))
+if K < 5:
+    print(0)
+else:
+    base = 0
+    for c in ('a', 'c', 'i', 'n', 't'):
+        base |= (1 << (ord(c) - ord('a')))
 
-words.sort(key lambda=)
-
-K -= 5 
-
-while K > 0:
-    if i > N-1 :
-        break
-    elif K >= words[i] :
-        K -= words[i]
-        i += 1 
-    else:
-        break 
-print(i)
+    maxCntReadable = -1
+    for comb in itertools.combinations(range(26), K-5):
+        mask = base
+        for i in comb:
+            mask |= (1 << i)
+        cntReadable = 0
+        for word in words:
+            isReadable = True
+            for c in word:
+                if not (mask & (1 << (ord(c) - ord('a')))):
+                    isReadable = False
+                    break
+            if isReadable:
+                cntReadable += 1
+        maxCntReadable = max(maxCntReadable, cntReadable)
+    print(maxCntReadable)
