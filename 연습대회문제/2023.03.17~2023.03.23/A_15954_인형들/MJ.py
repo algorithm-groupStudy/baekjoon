@@ -24,4 +24,5 @@ while K != N+1:
         if new_sum <= ans:
             ans = new_sum
     K += 1
+
 print(ans)
