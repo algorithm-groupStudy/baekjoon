@@ -1,9 +1,9 @@
-package daily.y_2023.m_03.d_01.bj_22871_징검다리건너기;
 
 import java.io.*;
 import java.util.*;
 
-public class Main3{
+public class Main {
+
     static int n,k;
     static long[] arr, dp;
     public static void main(String[] args)throws IOException{
