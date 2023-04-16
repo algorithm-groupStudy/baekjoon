@@ -32,7 +32,7 @@ for i in range(len(distance)):
     if find(parent,distance[i][1]) != find(parent,distance[i][2]):
         res+=distance[i][0]
         union(parent,node1,node2)
-        
+
 for i in range(1,len(parent)):
     parent[i] = find(parent,parent[i])
     if parent[i]!=1:
@@ -42,4 +42,3 @@ if res==0:
     print(-1)
 else:
     print(res)
-
