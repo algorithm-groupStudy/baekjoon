@@ -61,8 +61,3 @@ for tc in range(1,t+1):    # 테스트 케이스만큼 반복
     # 1) 최대한 많은 core를 연결, 2) 전선 최소 길이
     dfs(0,0,0)
     print(f"#{tc} {result[0]}")
-
-
-    
-
-
