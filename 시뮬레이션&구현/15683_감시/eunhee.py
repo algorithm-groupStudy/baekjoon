@@ -1,180 +1,59 @@
-from collections import deque
+# 다시풀기.
+import sys
+sys.stdin = open("test.txt")
 import copy
-def first(cur_x,cur_y, map_lst):
     
-    max_cnt =0 
-    max_lst=map_lst[:]
-    
-    for dx, dy in d:
-        queue = deque([(cur_x,cur_y)])
-        cnt=0
-        map_lst_copy = copy.deepcopy(map_lst)
-        while queue:
-            x, y = queue.popleft()
-            nx, ny = dx + x, dy + y
-            if 0<=nx<h and 0<=ny<w:
-                if map_lst_copy[nx][ny]==6:
+def watch(x,y,dx,board):
+    global res
+    for i in dx:
+        nx,ny = x,y
+        while True:
+            nx,ny = nx+d[i][0], ny+d[i][1]
+            if 0<=nx<N and 0<=ny<M:
+                if board[nx][ny]==6:
                     break
-                elif map_lst_copy[nx][ny]!=0:
-                    queue.append((nx,ny))
-                    continue
+                elif board[nx][ny]==0:
+                    board[nx][ny]="#"
+            else:
+                break
+
+def dfs(depth, board):
+    global res
+    if depth==len(cctv):
+        res=min(cnt_zero(board), res)
+        return
+    
+    x,y,di = cctv[depth]
+    copy_board = copy.deepcopy(board)
+    for dx in cctv_d[di-1]:
+        watch(x,y,dx,copy_board)
+        dfs(depth+1,copy_board)
+        copy_board=copy.deepcopy(board)
+
+def cnt_zero(lst):
+    cnt=0
+    for i in range(N):
+        for j in range(M):
+            if lst[i][j]==0:
                 cnt+=1
-                map_lst_copy[nx][ny]="#"
-                queue.append((nx,ny))
-        if max_cnt<cnt : 
-            max_cnt=cnt
-            max_lst = map_lst_copy[:]
-    return max_cnt,max_lst
+    return cnt
+d = [(0,1),(0,-1),(1,0),(-1,0)]    # 0우, 1좌, 2하, 3상
+cctv_d = [[[0],[1],[2],[3]],[[0,1],[2,3]],[[0,3],[0,2],[1,2],[1,3]],[[0,1,3],[0,2,3],[0,1,2],[1,2,3]],[[0,1,2,3]]]
 
 
-def second(cur_x, cur_y, map_lst):
-    max_cnt =0 
-    max_lst=map_lst[:]
-    for i in range(2):
-        cnt=0
-        map_lst_copy = copy.deepcopy(map_lst)
-        for dir in range((i*2),(i*2)+2):
-            queue = deque([(cur_x,cur_y)])
-            dx,dy = d[dir][0],d[dir][1]
-            while queue:
-                x,y = queue.popleft()
-                nx, ny = dx + x, dy + y
-                if 0<=nx<h and 0<=ny<w:
-                    if map_lst_copy[nx][ny]==6:
-                        break
-                    elif map_lst_copy[nx][ny]!=0:
-                        queue.append((nx,ny))
-                        continue
-                    cnt+=1
-                    map_lst_copy[nx][ny]="#"
-                    queue.append((nx,ny))
-
-        if cnt>max_cnt:
-            max_cnt=cnt
-            max_lst=map_lst_copy[:]
-    return max_cnt,max_lst
-
-def third(cur_x, cur_y, map_lst):
-    max_cnt =0 
-    max_lst=map_lst[:]
-    for i in range(4):
-        cnt=0
-        map_lst_copy = copy.deepcopy(map_lst)
-        for dir in [(i)%4,(i+1)%4]:
-            queue = deque([(cur_x,cur_y)])
-            dx,dy = d[dir][0],d[dir][1]
-            while queue:
-                x,y = queue.popleft()
-                nx, ny = dx + x, dy + y
-                if 0<=nx<h and 0<=ny<w:
-                    if map_lst_copy[nx][ny]==6:
-                        break
-                    elif map_lst_copy[nx][ny]!=0:
-                        queue.append((nx,ny))
-                        continue
-                    cnt+=1
-                    map_lst_copy[nx][ny]="#"
-                    queue.append((nx,ny))
-
-        if cnt>max_cnt:
-            max_cnt=cnt
-            max_lst=map_lst_copy[:]
-    return max_cnt,max_lst
-
-def fourth(cur_x, cur_y, map_lst):
-    max_cnt =0 
-    max_lst=map_lst[:]
-    for i in range(4):
-        cnt=0
-        map_lst_copy = copy.deepcopy(map_lst)
-        arr = [i%4,(i+1)%4,(i+2)%4]
-        for dir in arr:
-            queue = deque([(cur_x,cur_y)])
-            dx,dy = d[dir][0],d[dir][1]
-            while queue:
-                x,y = queue.popleft()
-                nx, ny = dx + x, dy + y
-                if 0<=nx<h and 0<=ny<w:
-                    if map_lst_copy[nx][ny]==6:
-                        break
-                    elif map_lst_copy[nx][ny]!=0:
-                        queue.append((nx,ny))
-                        continue
-                    cnt+=1
-                    map_lst_copy[nx][ny]="#"
-                    queue.append((nx,ny))
-
-        if cnt>max_cnt:
-            max_cnt=cnt
-            max_lst=map_lst_copy[:]
-    return max_cnt,max_lst
+N,M = map(int,input().split())
+res = (N*M)+1
+space = N*M
+board = []
+cctv=[]
+for i in range(N):
+    row = list(map(int,input().split()))
+    for j in range(M):
+        if row[j]!=0 and row[j]!=6:
+            cctv.append((i,j,row[j]))
+            space-=1
+    board.append(row)
 
 
-
-def fifth(cur_x,cur_y,map_lst):
-    max_cnt =0 
-    map_lst_copy = copy.deepcopy(map_lst)
-    
-    for dx, dy in d:
-        queue = deque([(cur_x,cur_y)])
-        while queue:
-            x, y = queue.popleft()
-            nx, ny = dx + x, dy + y
-            if 0<=nx<h and 0<=ny<w:
-                if map_lst_copy[nx][ny]==6:
-                    break
-                elif map_lst_copy[nx][ny]!=0:
-                    queue.append((nx,ny))
-                    continue
-                max_cnt+=1
-                map_lst_copy[nx][ny]="#"
-                queue.append((nx,ny))
-     
-    return max_cnt,map_lst_copy
-
-
-d=[(0,1),(0,-1),(1,0),(-1,0)]
-h, w = map(int,input().split())
-lst = [list(map(int,input().split())) for _ in range(h)]
-total=0
-res= h*w
-pos_lst= []
-for i in range(h):
-    for j in range(w):
-        if lst[i][j]==6:
-            res-=1
-            continue
-        if lst[i][j]==1:
-            pos_lst.append((1,i,j))
-            res-=1
-        elif lst[i][j]==2:
-            pos_lst.append((2,i,j))
-            res-=1
-        elif lst[i][j]==3:
-            pos_lst.append((3,i,j))
-            res-=1
-        elif lst[i][j]==4:
-            pos_lst.append((4,i,j))
-            res-=1
-        elif lst[i][j]==5:
-            pos_lst.append((5,i,j))
-            res-=1
-
-def dfs_per(lst,idx, t):
-    if 
-
-dfs_per([],0)
-for num,pos_x,pos_y in pos_lst:
-    if num == 1:
-        cnt,lst=first(pos_x,pos_y,lst)
-    elif num == 2:
-        cnt,lst=second(pos_x,pos_y,lst)
-    elif num == 3:
-        cnt,lst=third(pos_x,pos_y,lst)
-    elif num == 4:
-        cnt,lst=fourth(pos_x,pos_y,lst)
-    elif num == 5:
-        cnt,lst=fifth(pos_x,pos_y,lst)
-    total+=cnt
-
-print(res-total)
+dfs(0,board)
+print(res)
